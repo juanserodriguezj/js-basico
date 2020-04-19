@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piedra, Papel ó Tijera</title>
+    <style>
+      body {
+        text-align: center;
+        align-items: center;
+      }
+    </style>
+    <script>
+      var option_machine = parseInt(Math.random() * 3);
+      var usuarioPiedra = 0;
+      var usuarioPapel = 1;
+      var usuarioTijera = 2;
+
+      /* if (option_machine === usuarioPiedra) {
+        document.write("piedra"); //es la opcion del pc
+      } else if (option_machine === usuarioPapel) {
+        document.write("papel"); //es la opcion del pc
+      } else {
+        document.write("tijera"); //es la opcion del pc
+      } */
+
+      function jugarConPiedra() {
+        if (usuarioPiedra === option_machine) {
+          return alert(`Empate ${usuarioPiedra} ${option_machine}`);
+        } else if (option_machine === usuarioTijera) {
+          return alert(`Gana el usuario ${usuarioPiedra} ${option_machine}`);
+        } else if (option_machine === usuarioPapel) {
+          return alert(`Pierde el usuario ${usuarioPiedra} ${option_machine}`);
+        }
+      }
+
+      function jugarConPapel() {
+        if (usuarioPapel === option_machine) {
+          return alert(`Empate ${usuarioPapel} ${option_machine}`);
+        } else if (option_machine === usuarioPiedra) {
+          return alert(`Gana el usuario ${usuarioPapel} ${option_machine}`);
+        } else if (option_machine === usuarioTijera) {
+          return alert(`Pierde el usuario ${usuarioPapel} ${option_machine}`);
+        }
+      }
+
+      function jugarConTijera() {
+        if (usuarioTijera === option_machine) {
+          return alert(`Empate ${usuarioTijera} ${option_machine}`);
+        } else if (option_machine === usuarioPapel) {
+          return alert(`Gana el usuario ${usuarioTijera} ${option_machine}`);
+        } else if (option_machine === usuarioPiedra) {
+          return alert(`Pierde el usuario ${usuarioTijera} ${option_machine}`);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Juega priedra papel o tijera</h2>
+    <input type="button" value="jugar Con Piedra" onclick="jugarConPiedra()" />
+
+    <input type="button" value="jugar Con Papel" onclick="jugarConPapel()" />
+
+    <input type="button" value="jugar Con Tijera" onclick="jugarConTijera()" />
+  </body>
+</html>
