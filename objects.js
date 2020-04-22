@@ -20,3 +20,36 @@ var miCarro = {
 };
 
 miCarro.detalleDelCarro();
+
+// Funcion constructora
+function auto(marca, modelo, annio) {
+  this.marca = marca;
+  this.modelo = modelo;
+  this.annio = annio;
+  this.detallesDelAuto = function () {
+    console.log(
+      `Este vehiculo es un ${this.modelo}, de la marca ${this.marca}, año ${this.annio}`
+    );
+  };
+}
+
+var autos = [ ]
+
+functionauto (marca, modelo, annio){ 
+  this.marca = marca 
+  this.modelo = modelo
+  this.annio = annio
+}
+
+var marcas = ["Toyota", "BMW", "Honda", "Mercedez-Benz", "Ford"]
+var modelo = ["Corolla", "X6", "FIT", "GLE", "Raptor"]
+var annio = ["2017", "2020", "2016", "2020", "2015"]
+
+for (var i = 0; i < marcas.length; i++) {
+  autos.push(new auto(
+    marcas[i],
+    modelo[i],
+    annio[i]))
+}
+
+console.log(autos);
