@@ -46,3 +46,41 @@ for (var i = 0; i < personas.length; i++) {
   console.log(`${persona.nombre} mide ${persona.altura}`);
 }
 /* ------- flirtar elementos de un array ------- */
+// para filtrar necesitamos 2 cosas un array y una condicion
+
+const esAlta = (persona) => {
+  return persona.altura > 1.8;
+};
+//arrowfunction const esAlta = persona => persona.altura > 1.8
+
+// otra forma mas prolija es: const esAlta = ({altura}) => altura > 1.8
+
+var personasAltas = personas.filter(/*Condicion*/ esAlta);
+// var personaAltas = personas.filter(funtion(persona{return persona.altura > 1.8}))
+console.log(personasAltas);
+/* filter devuelve un nuevo array */
+
+const esBaja = (persona) => {
+  return persona.altura > 1.8;
+};
+
+var personasBajas = personas.filter(/*Condicion*/ esBaja);
+console.log(personasBajas);
+
+/* -------------- Transformar un array -------------- */
+// map nos devuelve un nuevo array,
+const pasarAlturaACm = (persona) => ({
+  ...persona, // un nuevo objeto con la persona desglosada
+  altura: (persona.altura *= 100),
+});
+
+var personasCm = personas.map(pasarAlturaACm);
+console.log(personasCm);
+
+/* -------------- Reducir un array -------------- */
+const REDUCER = (acum, persona) => {
+  return acum + persona.altura;
+};
+// arrowFunction simplificada const reducer = (acum, persona) => acum + persona.altura;
+// arrowFunction desestructuramos const reducer = (acum, {persona.altura}) => acum + persona.altura;
+var totalDeAltura = personas.reduce(reducer, 0);
