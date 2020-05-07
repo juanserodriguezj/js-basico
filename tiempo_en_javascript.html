@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Como funciona el tiempo en Javascript</title>
+  </head>
+  <body>
+    <!-- Asincronismo es la accion que No ocurre al mismo tiempo, modificar el DOM es un ejemplo de ello -->
+    <script>
+      console.log("a");
+      /* setTimeout funcion asincrona que programa la ejecucion de un callback una vez transcurrido cierto tiempo en milisegundos(1000ms = 1s)*/
+      /* Recuerda que un callback es un loop de eventos que esperan su turno */
+      setTimeout(() => {
+        console.log("b"); // impresion que se ejecutara despues de 2 segundos. Comportamiento asincrono.
+      }, 2000);
+      /*  el tiempo de espera definido en funciones como setTimeout, no garantizan que el callback se ejecute en ese tiempo exactamente, sino en cualquier momento a partir de allí, sólo cuando la cola de tareas se haya vaciado. */
+      console.log("c");
+    </script>
+  </body>
+</html>
