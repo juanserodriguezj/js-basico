@@ -21,7 +21,7 @@ function onError(id) {
 
 /* A diferencia de los callbacks en el CallbackHell, que terminan estando anidados unos dentro de otros, cuando se usan Promesas la ejecución de las llamadas no se hacen de manera anidada sino de manera encadenada, al mismo nivel una debajo de la otra, lo que hace que el código sea mucho más legible y mantenible. */
 
-obtenercharacter(1)
+/* obtenercharacter(1)
   .then((character) => {
     console.log(`El character 1 es ${character.name}`);
     return obtenercharacter(2);
@@ -45,5 +45,16 @@ obtenercharacter(1)
   .then((character) => {
     console.log(`El character 6 es ${character.name}`);
   })
-  .catch(onError);
+  .catch(onError); */
+
 // estos requests se estan haciendo en serie y no en paralelo.
+
+var ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // arrowFunction
+/* var promesas = ids.map(function (id) {
+  return obtenercharacter(id);
+});
+ */
+var promesas = ids.map((id) => obtenercharacter(id));
+Promise.all(promesas)
+  .then((personajes) => console.log(personajes))
+  .catch(onError);
