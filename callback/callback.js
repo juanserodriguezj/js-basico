@@ -13,9 +13,9 @@ function obtenerPersonaje(id) {
   $.get(url, options, onPeopleResponse);
 }
 
-obtenerPersonaje(1);
-obtenerPersonaje(2);
-obtenerPersonaje(3);
+//obtenerPersonaje(1);
+//obtenerPersonaje(2);
+//obtenerPersonaje(3);
 
 /* Es el asincronismo en su maximo expresion, basicamente no sabemos en que orden nos van a llegar las repuestas, entender que vamos a llamar un metodo asincronico que no sabemos en orden nos van a llegar las respuestas, eso depende del servidor y de cuanto va a demorar en responder los request, solo sabemos el orden en que iniciamos los requests pero no sabemos en que orden nos va a llegar  */
 //-------------------------------------------------
@@ -23,17 +23,18 @@ obtenerPersonaje(3);
 
 function obtenerPersonaje2(id, callback) {
   const url = `${API_URL}${PEOPLE_URL.replace(":id", id)}`;
-  $.get(url, options, function (character) {
-    console.log(`Hola, yo soy ${character.name}`);
-  });
 
-  if (callback) {
-    callback();
-  }
+  $.get(url, options, callback).fail(() => {
+    console.log(`Sucedio un error. No se pudo obtener al personaje ${id}`);
+  });
 }
 // -----CallbackHell -----
-obtenerPersonaje2(1, function () {
-  obtenerPersonaje2(2, function () {
-    obtenerPersonaje2(3, function () {});
+obtenerPersonaje2(1, function (character) {
+  console.log(`Hola, yo soy ${character.name}`);
+  obtenerPersonaje2(2, function (character) {
+    console.log(`Hola, yo soy ${character.name}`);
+    obtenerPersonaje2(3, function (character) {
+      console.log(`Hola, yo soy ${character.name}`);
+    });
   });
 });
